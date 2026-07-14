@@ -5,360 +5,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service — VowDaily</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --green-deep: #2d5a3d;
-    --green-mid: #3d6b4f;
-    --green-light: #f0f7f3;
-    --cream: #faf9f4;
-    --text-dark: #1e2d24;
-    --text-mid: #4a5e52;
-    --text-muted: #7a8f82;
-    --border: #dde8e1;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background: var(--cream);
-    color: var(--text-dark);
-    line-height: 1.75;
-    font-size: 17px;
-  }
-
-  header {
-    background: var(--green-deep);
-    padding: 28px 24px 24px;
-    text-align: center;
-  }
-
-  .logo-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 6px;
-  }
-
-  .logo-name {
-    font-family: Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 0.02em;
-  }
-
-  .header-sub {
-    color: rgba(255,255,255,0.65);
-    font-size: 13px;
-    font-family: -apple-system, sans-serif;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .container {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
-
-  .page-title {
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--green-deep);
-    margin-bottom: 6px;
-    line-height: 1.2;
-  }
-
-  .last-updated {
-    font-family: -apple-system, sans-serif;
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-  }
-
-  .intro-card {
-    background: var(--green-light);
-    border-left: 4px solid var(--green-deep);
-    border-radius: 0 10px 10px 0;
-    padding: 20px 24px;
-    margin-bottom: 40px;
-    font-style: italic;
-    color: var(--green-deep);
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  .section {
-    margin-bottom: 36px;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-num {
-    font-family: -apple-system, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--green-mid);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    padding-top: 3px;
-  }
-
-  .section-title {
-    font-size: 19px;
-    font-weight: 700;
-    color: var(--text-dark);
-    line-height: 1.3;
-  }
-
-  .section p {
-    color: var(--text-mid);
-    font-size: 16px;
-    line-height: 1.8;
-  }
-
-  .bullet-list {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .bullet-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 16px;
-    color: var(--text-mid);
-    line-height: 1.6;
-  }
-
-  .bullet-list li::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green-mid);
-    flex-shrink: 0;
-    margin-top: 9px;
-  }
-
-  .warning-box {
-    background: #fff8f0;
-    border: 1px solid #f0d5b0;
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-top: 12px;
-    font-size: 15px;
-    color: #7a5500;
-    font-family: -apple-system, sans-serif;
-    line-height: 1.7;
-  }
-
-  .highlight-box {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 20px;
-    margin-top: 12px;
-    font-size: 15px;
-    color: var(--text-mid);
-    font-family: -apple-system, sans-serif;
-    line-height: 1.7;
-  }
-
-  footer {
-    background: var(--green-deep);
-    padding: 36px 24px;
-    text-align: center;
-  }
-
-  .footer-logo {
-    font-family: Georgia, serif;
-    font-size: 18px;
-    color: #fff;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-
-  .footer-address {
-    font-family: -apple-system, sans-serif;
-    font-size: 13px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .footer-email a {
-    color: rgba(255,255,255,0.85);
-    font-family: -apple-system, sans-serif;
-    font-size: 14px;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
-    padding-bottom: 2px;
-  }
-
-  .footer-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-  }
-
-  .footer-links a {
-    color: rgba(255,255,255,0.5);
-    font-family: -apple-system, sans-serif;
-    font-size: 12px;
-    text-decoration: none;
-  }
-
-  .footer-links a:hover { color: rgba(255,255,255,0.85); }
-
-  @media (max-width: 600px) {
-    .page-title { font-size: 26px; }
-    .container { padding: 32px 18px 60px; }
-    .section-title { font-size: 17px; }
-    body { font-size: 16px; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2d5a3d;
+  --green-mid:#3d6b4f;
+  --green-light:#f0f7f3;
+  --cream:#faf9f4;
+  --text:#1e2d24;
+  --text-mid:#4a5e52;
+  --text-muted:#7a8f82;
+  --border:#dde8e1;
+}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--text);line-height:1.75;font-size:17px}
+header{background:var(--green);padding:28px 24px 24px;text-align:center}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:6px}
+.logo-name{font-family:Georgia,serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:.02em}
+.header-sub{color:rgba(255,255,255,0.65);font-size:13px;font-family:-apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+.container{max-width:720px;margin:0 auto;padding:48px 24px 80px}
+.page-title{font-size:32px;font-weight:700;color:var(--green);margin-bottom:6px;line-height:1.2}
+.last-updated{font-family:-apple-system,sans-serif;font-size:13px;color:var(--text-muted);margin-bottom:40px}
+.intro-card{background:var(--green-light);border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:20px 24px;margin-bottom:40px;font-style:italic;color:var(--green);font-size:16px;line-height:1.7}
+.section{margin-bottom:36px}
+.section-header{display:flex;align-items:baseline;gap:12px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.section-num{font-family:-apple-system,sans-serif;font-size:11px;font-weight:600;color:var(--green-mid);letter-spacing:.1em;text-transform:uppercase;flex-shrink:0;padding-top:3px}
+.section-title{font-size:19px;font-weight:700;color:var(--text);line-height:1.3}
+.section p{color:var(--text-mid);font-size:16px;line-height:1.8;margin-bottom:10px}
+.bullet-list{list-style:none;padding:0;margin:10px 0 0;display:flex;flex-direction:column;gap:8px}
+.bullet-list li{display:flex;align-items:flex-start;gap:10px;font-size:16px;color:var(--text-mid);line-height:1.6}
+.bullet-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green-mid);flex-shrink:0;margin-top:9px}
+.highlight-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-top:12px;font-size:15px;color:var(--text-mid);font-family:-apple-system,sans-serif;line-height:1.7}
+.highlight-box strong{color:var(--green)}
+.warning-box{background:#fff8f0;border:1px solid #f0d5b0;border-radius:10px;padding:16px 20px;margin-top:12px;font-size:15px;color:#7a5500;font-family:-apple-system,sans-serif;line-height:1.7}
+footer{background:var(--green);padding:36px 24px}
+.footer-logo{font-family:Georgia,serif;font-size:18px;color:#fff;font-weight:700;margin-bottom:8px;text-align:center}
+.footer-address{font-family:-apple-system,sans-serif;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:16px;text-align:center}
+.footer-email{text-align:center;margin-bottom:16px}
+.footer-email a{color:rgba(255,255,255,0.85);font-family:-apple-system,sans-serif;font-size:14px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.3);padding-bottom:2px}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-top:20px}
+.footer-links a{color:rgba(255,255,255,0.5);font-family:-apple-system,sans-serif;font-size:12px;text-decoration:none}
+@media(max-width:600px){.page-title{font-size:26px}.container{padding:32px 18px 60px}.section-title{font-size:17px}body{font-size:16px}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo-row">
-    <span class="logo-name">VowDaily</span>
-  </div>
+  <div class="logo-row"><span class="logo-name">VowDaily</span></div>
   <div class="header-sub">Terms of Service</div>
 </header>
-
 <div class="container">
   <h1 class="page-title">Terms of Service</h1>
   <p class="last-updated">Last updated: July 2026</p>
+  <div class="intro-card">By creating an account or using VowDaily, you agree to these Terms of Service. If you do not agree, please do not use the app.</div>
 
-  <div class="intro-card">
-    By creating an account or using VowDaily, you agree to these Terms of Service. If you do not agree, please do not use the app.
+  <div class="section">
+    <div class="section-header"><span class="section-num">01</span><h2 class="section-title">Acceptance of Terms</h2></div>
+    <p>By downloading, creating an account, or using VowDaily, you agree to be bound by these Terms of Service and our Privacy Policy. If you do not agree to these terms, please do not use the app. These Terms constitute a legally binding agreement between you and VowDaily.</p>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Acceptance of Terms</h2>
-    </div>
-    <p>By creating an account or using VowDaily, you agree to these Terms of Service. If you do not agree, please do not use the app.</p>
+    <div class="section-header"><span class="section-num">02</span><h2 class="section-title">Eligibility and Age Requirement</h2></div>
+    <p>VowDaily is intended for users aged 17 and older. By using this app you confirm that you are at least 17 years of age. If you are under 17 you may not use VowDaily. We do not knowingly collect information from users under 17. If we discover that a user is under 17 we will terminate their account and delete their data immediately.</p>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Description of Service</h2>
-    </div>
-    <p>VowDaily is a faith-based companion app that provides daily prayers, actions, and reflections tailored to your spouse's love language. The app offers a free tier and a premium subscription with additional features including AI-personalized content, date night suggestions, and advanced tracking.</p>
+    <div class="section-header"><span class="section-num">03</span><h2 class="section-title">Description of Service</h2></div>
+    <p>VowDaily is a faith-based companion app that provides daily prayers, actions, and reflections tailored to your spouse's love language. The app offers a free tier and a premium subscription with additional features including AI-personalized content, date night suggestions, check-in prompts, photo memory log, and advanced tracking.</p>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Subscriptions & Billing</h2>
-    </div>
+    <div class="section-header"><span class="section-num">04</span><h2 class="section-title">Subscriptions and Billing</h2></div>
     <ul class="bullet-list">
       <li>VowDaily Premium is available as a monthly or annual subscription with a 7-day free trial on the annual plan</li>
       <li>Payment is processed through Apple's App Store or Google Play Store</li>
       <li>Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current billing period</li>
       <li>You can manage or cancel your subscription anytime in your device's store settings</li>
       <li>No refunds are issued for partial billing periods</li>
+      <li>We reserve the right to change subscription pricing with reasonable advance notice</li>
     </ul>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Your Account</h2>
-    </div>
+    <div class="section-header"><span class="section-num">05</span><h2 class="section-title">Your Account</h2></div>
     <ul class="bullet-list">
       <li>You are responsible for maintaining the security of your account credentials</li>
       <li>You must provide accurate information during registration</li>
+      <li>You may not share your account with others or create multiple accounts</li>
       <li>You can delete your account and all associated data at any time from the app's Settings screen</li>
+      <li>You are responsible for all activity that occurs under your account</li>
     </ul>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Acceptable Use</h2>
-    </div>
-    <p>You agree to use VowDaily for its intended purpose — strengthening your marriage through daily prayer and intentional action. You may not use the app to harass, harm, or deceive others, or for any unlawful purpose.</p>
+    <div class="section-header"><span class="section-num">06</span><h2 class="section-title">Acceptable Use</h2></div>
+    <p>You agree to use VowDaily for its intended purpose — strengthening your marriage through daily prayer and intentional action. You may not use the app to:</p>
+    <ul class="bullet-list">
+      <li>Harass, harm, or deceive others</li>
+      <li>Upload content that is unlawful, offensive, or infringes on third party rights</li>
+      <li>Attempt to gain unauthorized access to any part of the service</li>
+      <li>Reverse engineer, decompile, or disassemble any part of the app</li>
+      <li>Use the service for any commercial purpose without our written consent</li>
+      <li>Violate any applicable local, state, national, or international law</li>
+    </ul>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">06</span>
-      <h2 class="section-title">AI-Generated Content</h2>
-    </div>
-    <p>Premium content is generated by AI models and reviewed for quality. However, AI-generated content may occasionally contain inaccuracies.</p>
-    <div class="warning-box">
-      The content is intended as inspiration and should not replace professional counseling or pastoral guidance.
-    </div>
+    <div class="section-header"><span class="section-num">07</span><h2 class="section-title">AI-Generated Content and FTC Disclosure</h2></div>
+    <p>Premium content is generated by artificial intelligence models through OpenRouter. In compliance with FTC guidelines, all AI-generated content is clearly labeled as such within the app at the point of display.</p>
+    <div class="warning-box">AI-generated content may occasionally contain inaccuracies or imperfections. The content is intended as spiritual inspiration and should not replace professional marriage counseling, therapy, or pastoral guidance. VowDaily is not a licensed counseling service.</div>
   </div>
 
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">07</span>
-      <h2 class="section-title">Limitation of Liability</h2>
-    </div>
-    <p>VowDaily is provided "as is" without warranties of any kind. We are not liable for any indirect, incidental, or consequential damages arising from your use of the app.</p>
+    <div class="section-header"><span class="section-num">08</span><h2 class="section-title">Your Content</h2></div>
+    <p>You own the content you create in VowDaily including check-in notes, reflections, custom date night ideas, and photos you upload. By submitting content to VowDaily you grant us a limited, non-exclusive, royalty-free license to store, display, and process your content solely for the purpose of providing the VowDaily service to you. We do not claim ownership of your content and do not use it for any other purpose.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">09</span><h2 class="section-title">Intellectual Property</h2></div>
+    <p>VowDaily and all of its content, features, functionality, design, code, and branding are owned by VowDaily and are protected by applicable intellectual property laws. You may not reproduce, distribute, modify, create derivative works of, publicly display, or exploit any part of VowDaily without our express written permission. The VowDaily name, logo, and all related marks are trademarks of VowDaily.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">10</span><h2 class="section-title">DMCA and Copyright</h2></div>
+    <p>VowDaily respects intellectual property rights. If you believe content on our platform infringes your copyright, please send a DMCA takedown notice to our designated agent at support@vowdaily.app including:</p>
+    <ul class="bullet-list">
+      <li>A description of the copyrighted work you claim has been infringed</li>
+      <li>The location of the allegedly infringing material within VowDaily</li>
+      <li>Your contact information including name, address, and email</li>
+      <li>A statement of good faith belief that the use is not authorized by the copyright owner</li>
+      <li>A statement under penalty of perjury that the information is accurate and you are authorized to act on behalf of the copyright owner</li>
+    </ul>
+    <p style="margin-top:12px">We will respond promptly to valid DMCA notices and remove infringing content where appropriate. Our designated DMCA agent is registered with the United States Copyright Office.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">11</span><h2 class="section-title">Termination</h2></div>
+    <p>We reserve the right to suspend or terminate your account at any time and without notice if you violate these Terms of Service, engage in fraudulent activity, or use VowDaily in any way that could cause harm to other users or to VowDaily. You may also terminate your account at any time by deleting it from Settings. Upon termination all licenses granted to you will immediately cease and your data will be deleted in accordance with our Privacy Policy.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">12</span><h2 class="section-title">Limitation of Liability</h2></div>
+    <p>VowDaily is provided "as is" without warranties of any kind, either express or implied. We do not warrant that the service will be uninterrupted, error-free, or free of viruses or other harmful components.</p>
+    <div class="highlight-box">To the fullest extent permitted by applicable law, VowDaily shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the service, even if we have been advised of the possibility of such damages. VowDaily is not a substitute for professional marriage counseling or therapy.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">13</span><h2 class="section-title">Indemnification</h2></div>
+    <p>You agree to indemnify, defend, and hold harmless VowDaily and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses including reasonable attorney's fees arising out of or in any way connected with your access to or use of VowDaily, your violation of these Terms, or your infringement of any intellectual property or other rights of any person or entity.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">14</span><h2 class="section-title">Governing Law</h2></div>
+    <p>These Terms of Service shall be governed by and construed in accordance with the laws of the State of Nevada, United States, without regard to its conflict of law provisions. You agree to submit to the personal jurisdiction of the courts located in Nevada for any disputes that are not subject to arbitration.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">15</span><h2 class="section-title">Dispute Resolution and Arbitration</h2></div>
+    <p>All disputes arising out of or in connection with these Terms of Service shall be finally settled under the Rules of Arbitration of the International Chamber of Commerce by one or more arbitrators appointed in accordance with the said Rules.</p>
+    <div class="highlight-box">By agreeing to these Terms you waive your right to participate in a class action lawsuit or class-wide arbitration. If you have a dispute with VowDaily, you agree to resolve it through individual arbitration rather than through the courts, except where prohibited by applicable law.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">16</span><h2 class="section-title">Changes to These Terms</h2></div>
+    <p>We may update these Terms from time to time. We will notify you of significant changes through the app or by email before the changes take effect. Continued use of VowDaily after changes constitutes acceptance of the updated Terms. If you do not agree to the updated Terms you must stop using VowDaily and delete your account.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-num">17</span><h2 class="section-title">Contact</h2></div>
+    <p>Questions about these Terms? We are here to help.</p>
     <div class="highlight-box">
-      VowDaily is not a substitute for professional marriage counseling or therapy. If you or your spouse are experiencing serious difficulties, please seek qualified professional support.
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">08</span>
-      <h2 class="section-title">Changes to These Terms</h2>
-    </div>
-    <p>We may update these Terms from time to time. Continued use of the app after changes constitutes acceptance of the updated Terms. We will notify you of significant changes through the app or by email.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">09</span>
-      <h2 class="section-title">Contact</h2>
-    </div>
-    <p>Questions about these Terms? We're here to help.</p>
-    <div class="highlight-box">
-      Email: <a href="mailto:support@vowdaily.app" style="color: var(--green-deep);">support@vowdaily.app</a>
+      Email: <a href="mailto:support@vowdaily.app" style="color:var(--green)">support@vowdaily.app</a><br><br>
+      VowDaily<br>
+      1749 Victorian Ave PMB 2007<br>
+      Sparks, NV 89431
     </div>
   </div>
 
 </div>
-
 <footer>
   <div class="footer-logo">VowDaily</div>
-  <div class="footer-address">
-    1749 Victorian Ave PMB 2007<br>
-    Sparks, NV 89431
-  </div>
-  <div class="footer-email">
-    <a href="mailto:support@vowdaily.app">support@vowdaily.app</a>
-  </div>
+  <div class="footer-address">1749 Victorian Ave PMB 2007<br>Sparks, NV 89431</div>
+  <div class="footer-email"><a href="mailto:support@vowdaily.app">support@vowdaily.app</a></div>
   <div class="footer-links">
     <a href="/terms-of-service">Terms of Service</a>
     <a href="/privacy-policy">Privacy Policy</a>
   </div>
 </footer>
-
 </body>
 </html>
