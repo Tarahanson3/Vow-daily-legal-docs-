@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VowDaily — Pray for your spouse, daily.</title>
+<meta name="description" content="VowDaily sends you a personalized daily prayer for your spouse — rooted in Scripture and tailored to their love language. Build the daily habit that transforms your marriage.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#2d5a3d;
+  --green-mid:#3d6b4f;
+  --green-light:#f0f7f3;
+  --cream:#faf9f4;
+  --cream-dark:#f2f0e8;
+  --text:#1e2d24;
+  --text-mid:#4a5e52;
+  --text-muted:#7a8f82;
+  --border:#dde8e1;
+  --rose:#c4867a;
+}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--text);line-height:1.75;font-size:17px;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,249,244,0.95);backdrop-filter:blur(8px);border-bottom:0.5px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--green);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{font-family:-apple-system,sans-serif;font-size:14px;color:var(--text-mid);text-decoration:none}
+.nav-links a:hover{color:var(--green)}
+.nav-cta{background:var(--green);color:#fff !important;padding:8px 20px;border-radius:20px;font-weight:500 !important}
+.nav-cta:hover{background:var(--green-mid) !important}
+
+/* HERO */
+.hero{padding:120px 24px 80px;text-align:center;max-width:800px;margin:0 auto}
+.hero-eyebrow{font-family:-apple-system,sans-serif;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:20px}
+.hero h1{font-size:clamp(36px,6vw,60px);font-weight:700;color:var(--text);line-height:1.15;margin-bottom:20px}
+.hero h1 em{color:var(--green);font-style:normal}
+.hero-sub{font-size:18px;color:var(--text-mid);line-height:1.7;max-width:560px;margin:0 auto 40px}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-primary{background:var(--green);color:#fff;padding:14px 32px;border-radius:30px;font-family:-apple-system,sans-serif;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;transition:background .15s}
+.btn-primary:hover{background:var(--green-mid)}
+.btn-secondary{background:transparent;color:var(--green);border:1.5px solid var(--green);padding:13px 28px;border-radius:30px;font-family:-apple-system,sans-serif;font-size:15px;font-weight:500;text-decoration:none;display:inline-block}
+.hero-note{font-family:-apple-system,sans-serif;font-size:12px;color:var(--text-muted);margin-top:14px}
+.coming-soon-badge{display:inline-block;background:var(--green-light);border:1px solid var(--border);color:var(--green);font-family:-apple-system,sans-serif;font-size:13px;font-weight:600;padding:8px 20px;border-radius:20px;margin-bottom:24px;letter-spacing:.04em}
+.email-capture-wrap{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:28px 28px 20px;box-shadow:0 4px 24px rgba(45,90,61,0.08)}
+.email-capture-title{font-size:17px;font-weight:600;color:var(--text);margin-bottom:6px;font-family:-apple-system,sans-serif}
+.email-capture-sub{font-size:14px;color:var(--text-muted);margin-bottom:20px;font-family:-apple-system,sans-serif;line-height:1.5}
+.email-capture-form-wrap{min-height:434px}
+.spam-note{font-family:-apple-system,sans-serif;font-size:11px;color:var(--text-muted);margin-top:10px;text-align:center}
+
+/* VERSE STRIP */
+.verse-strip{background:var(--green);padding:32px 24px;text-align:center}
+.verse-strip blockquote{font-size:16px;font-style:italic;color:rgba(255,255,255,0.9);max-width:600px;margin:0 auto 8px;line-height:1.8}
+.verse-strip cite{font-family:-apple-system,sans-serif;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:.08em;text-transform:uppercase;font-style:normal}
+
+/* PHONE MOCKUP SECTION */
+.preview-section{padding:80px 24px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.preview-text h2{font-size:clamp(26px,4vw,36px);font-weight:700;color:var(--text);line-height:1.25;margin-bottom:16px}
+.preview-text p{font-size:16px;color:var(--text-mid);line-height:1.8;margin-bottom:24px}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.feature-list li{display:flex;align-items:flex-start;gap:12px;font-family:-apple-system,sans-serif;font-size:15px;color:var(--text-mid)}
+.feature-check{width:22px;height:22px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.feature-check::after{content:'✓';font-size:11px;color:var(--green);font-weight:700}
+.phone-frame{background:#1a1a1a;border-radius:44px;padding:10px;box-shadow:0 40px 80px rgba(0,0,0,0.15);max-width:280px;margin:0 auto}
+.phone-screen{background:var(--cream);border-radius:36px;overflow:hidden;min-height:560px;display:flex;flex-direction:column}
+.phone-status{background:var(--green);padding:12px 20px 8px;display:flex;justify-content:space-between}
+.phone-status span{color:rgba(255,255,255,0.8);font-family:-apple-system,sans-serif;font-size:11px}
+.phone-header{background:var(--green);padding:12px 20px 16px;text-align:center}
+.phone-header-label{color:rgba(255,255,255,0.6);font-family:-apple-system,sans-serif;font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.phone-prayer{font-family:Georgia,serif;font-size:12px;font-style:italic;color:#fff;line-height:1.65}
+.phone-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:10px}
+.phone-verse-card{background:#fff;border-radius:10px;padding:10px 12px;border:0.5px solid var(--border)}
+.phone-verse-label{font-family:-apple-system,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:4px}
+.phone-verse-text{font-family:Georgia,serif;font-size:10px;font-style:italic;color:var(--text);line-height:1.5}
+.phone-action-card{background:#fff;border-radius:10px;padding:10px 12px;border:0.5px solid var(--border)}
+.phone-action-label{font-family:-apple-system,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin-bottom:4px}
+.phone-action-text{font-family:-apple-system,sans-serif;font-size:10px;color:var(--text);line-height:1.5}
+.phone-complete-btn{background:var(--green);border-radius:10px;padding:10px;text-align:center}
+.phone-complete-btn span{font-family:-apple-system,sans-serif;font-size:10px;color:#fff;font-weight:600}
+.phone-streak{background:var(--green-light);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px}
+.phone-streak-fire{font-size:16px}
+.phone-streak-text{font-family:-apple-system,sans-serif;font-size:10px;color:var(--green);font-weight:500}
+
+/* FEATURES GRID */
+.features-section{padding:80px 24px;background:var(--cream-dark)}
+.features-section h2{text-align:center;font-size:clamp(26px,4vw,36px);font-weight:700;color:var(--text);margin-bottom:12px}
+.features-section .section-sub{text-align:center;font-family:-apple-system,sans-serif;font-size:16px;color:var(--text-muted);margin-bottom:48px}
+.features-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.feature-card{background:#fff;border-radius:16px;border:0.5px solid var(--border);padding:28px 24px}
+.feature-icon{font-size:28px;margin-bottom:14px}
+.feature-card h3{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px}
+.feature-card p{font-family:-apple-system,sans-serif;font-size:14px;color:var(--text-muted);line-height:1.7}
+
+/* LOVE LANGUAGE */
+.ll-section{padding:80px 24px;max-width:900px;margin:0 auto;text-align:center}
+.ll-section h2{font-size:clamp(26px,4vw,36px);font-weight:700;color:var(--text);margin-bottom:12px}
+.ll-section .section-sub{font-family:-apple-system,sans-serif;font-size:16px;color:var(--text-muted);margin-bottom:48px}
+.ll-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.ll-pill{background:var(--green-light);border:1px solid var(--border);border-radius:30px;padding:10px 20px;font-family:-apple-system,sans-serif;font-size:14px;color:var(--green);display:flex;align-items:center;gap:8px}
+.ll-pill .ll-icon{font-size:18px}
+
+/* STAT */
+.stat-section{background:var(--green);padding:80px 24px;text-align:center}
+.stat-section .stat-num{font-size:clamp(60px,10vw,96px);font-weight:700;color:#fff;line-height:1;margin-bottom:8px;font-family:Georgia,serif}
+.stat-section .stat-label{font-family:-apple-system,sans-serif;font-size:16px;color:rgba(255,255,255,0.7);margin-bottom:20px}
+.stat-section .stat-text{font-family:Georgia,serif;font-size:18px;font-style:italic;color:rgba(255,255,255,0.85);max-width:560px;margin:0 auto 8px;line-height:1.7}
+.stat-section .stat-source{font-family:-apple-system,sans-serif;font-size:12px;color:rgba(255,255,255,0.4)}
+
+/* PRICING */
+.pricing-section{padding:80px 24px;max-width:800px;margin:0 auto;text-align:center}
+.pricing-section h2{font-size:clamp(26px,4vw,36px);font-weight:700;color:var(--text);margin-bottom:12px}
+.pricing-section .section-sub{font-family:-apple-system,sans-serif;font-size:16px;color:var(--text-muted);margin-bottom:48px}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pricing-card{background:#fff;border-radius:16px;border:0.5px solid var(--border);padding:28px 24px;text-align:left}
+.pricing-card.featured{border:2px solid var(--green);background:var(--green-light)}
+.pricing-badge{background:var(--green);color:#fff;font-family:-apple-system,sans-serif;font-size:11px;padding:3px 10px;border-radius:10px;display:inline-block;margin-bottom:12px}
+.pricing-plan{font-family:-apple-system,sans-serif;font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px}
+.pricing-price{font-family:Georgia,serif;font-size:32px;font-weight:700;color:var(--green);margin-bottom:4px}
+.pricing-period{font-family:-apple-system,sans-serif;font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.pricing-features li{display:flex;align-items:flex-start;gap:10px;font-family:-apple-system,sans-serif;font-size:13px;color:var(--text-mid)}
+.pricing-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+
+/* TESTIMONIAL */
+.testimonial-section{padding:80px 24px;background:var(--cream-dark)}
+.testimonial-section h2{text-align:center;font-size:clamp(24px,4vw,32px);font-weight:700;color:var(--text);margin-bottom:48px}
+.testimonial-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.testimonial-card{background:#fff;border-radius:16px;border:0.5px solid var(--border);padding:24px}
+.testimonial-stars{color:var(--green);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.testimonial-text{font-family:Georgia,serif;font-size:15px;font-style:italic;color:var(--text-mid);line-height:1.7;margin-bottom:16px}
+.testimonial-author{font-family:-apple-system,sans-serif;font-size:13px;color:var(--text-muted);font-weight:500}
+
+/* CTA SECTION */
+.cta-section{padding:100px 24px;text-align:center;max-width:700px;margin:0 auto}
+.cta-section h2{font-size:clamp(28px,5vw,44px);font-weight:700;color:var(--text);line-height:1.2;margin-bottom:16px}
+.cta-section p{font-family:-apple-system,sans-serif;font-size:16px;color:var(--text-muted);margin-bottom:36px}
+.app-store-btn{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;padding:12px 24px;border-radius:12px;text-decoration:none;font-family:-apple-system,sans-serif}
+.app-store-btn-inner{text-align:left}
+.app-store-btn-sub{font-size:10px;opacity:0.7;display:block}
+.app-store-btn-name{font-size:16px;font-weight:600;display:block}
+
+/* FOOTER */
+footer{background:var(--green);padding:48px 24px 32px}
+.footer-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+.footer-brand .footer-logo{font-family:Georgia,serif;font-size:20px;font-weight:700;color:#fff;margin-bottom:8px}
+.footer-brand p{font-family:-apple-system,sans-serif;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.7}
+.footer-col h4{font-family:-apple-system,sans-serif;font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.footer-col a{display:block;font-family:-apple-system,sans-serif;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;margin-bottom:8px}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:1000px;margin:32px auto 0;padding-top:24px;border-top:0.5px solid rgba(255,255,255,0.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-family:-apple-system,sans-serif;font-size:12px;color:rgba(255,255,255,0.4)}
+.footer-bottom a{font-family:-apple-system,sans-serif;font-size:12px;color:rgba(255,255,255,0.4);text-decoration:none}
+
+@media(max-width:768px){
+  .preview-section{grid-template-columns:1fr;gap:40px}
+  .pricing-grid{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">VowDaily</a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="/privacy-policy">Privacy</a>
+    <a href="#download" class="nav-cta">Download</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">A daily habit for biblical marriage</p>
+  <h1>Pray for your spouse.<br><em>Every single day.</em></h1>
+  <p class="hero-sub">VowDaily sends you a personalized daily prayer for your spouse — rooted in Scripture, tailored to their love language, and designed to make intentional love a daily habit.</p>
+  <div class="hero-btns">
+    <a href="https://apps.apple.com/app/id6788485846" class="app-store-btn" target="_blank">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      <div class="app-store-btn-inner">
+        <span class="app-store-btn-sub">Download on the</span>
+        <span class="app-store-btn-name">App Store</span>
+      </div>
+    </a>
+  </div>
+  <p class="hero-note">Free to start · No credit card required</p>
+</section>
+
+<div class="verse-strip">
+  <blockquote>"A cord of three strands is not quickly broken."</blockquote>
+  <cite>Ecclesiastes 4:12 — KJV</cite>
+</div>
+
+<section class="preview-section" id="features">
+  <div class="preview-text">
+    <h2>More than a devotional. A daily practice.</h2>
+    <p>Most couples want to be more intentional but never find a system that actually sticks. VowDaily gives you a daily trigger, a specific prayer, and a concrete action — all tailored to your spouse.</p>
+    <ul class="feature-list">
+      <li><span class="feature-check"></span>Personalized daily prayer for your spouse by name</li>
+      <li><span class="feature-check"></span>A Scripture verse to anchor your day</li>
+      <li><span class="feature-check"></span>A specific love language action to do today</li>
+      <li><span class="feature-check"></span>Daily reminder at the time you choose</li>
+      <li><span class="feature-check"></span>Streak tracking so the habit actually builds</li>
+    </ul>
+  </div>
+  <div>
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="phone-status">
+          <span>9:41</span>
+          <span>VowDaily</span>
+        </div>
+        <div class="phone-header">
+          <div class="phone-header-label">Today's prayer for Tyler</div>
+          <div class="phone-prayer">"Lord, grant Tyler clarity and peace as he leads today. Strengthen him where he feels weak and remind him he does not walk alone."</div>
+        </div>
+        <div class="phone-body">
+          <div class="phone-verse-card">
+            <div class="phone-verse-label">Today's verse</div>
+            <div class="phone-verse-text">"The Lord is my shepherd; I shall not want." — Psalm 23:1 KJV</div>
+          </div>
+          <div class="phone-action-card">
+            <div class="phone-action-label">Today's action — quality time</div>
+            <div class="phone-action-text">Put your phone away tonight for 20 minutes and just be present with Tyler.</div>
+          </div>
+          <div class="phone-complete-btn">
+            <span>Mark prayer complete ✓</span>
+          </div>
+          <div class="phone-streak">
+            <span class="phone-streak-fire">🔥</span>
+            <span class="phone-streak-text">14-day streak — keep going</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <h2>Everything your marriage needs, daily.</h2>
+  <p class="section-sub">Built for couples who want to pursue each other intentionally, not just coexist.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🙏</div>
+      <h3>Daily prayer</h3>
+      <p>A fresh prayer for your spouse every day, written with their name and grounded in Scripture. Never generic, never the same twice.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💑</div>
+      <h3>Love language actions</h3>
+      <p>Specific, concrete things to do today tailored to how your spouse gives and receives love. No guessing, no vague advice.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🍽️</div>
+      <h3>Date night ideas</h3>
+      <p>Weekly suggestions matched to your love languages, with a calendar reminder so date night actually happens.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>2-minute check-in</h3>
+      <p>A guided check-in that helps you ask the right questions from a place of service rather than waiting to be served.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Memory calendar</h3>
+      <p>Every prayer, action, and reflection saved so you can look back on months of intentional love. Upload photos to mark the moments.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <h3>Streak tracking</h3>
+      <p>A visual record of every day you showed up for your spouse. The number matters because the habit matters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ll-section">
+  <h2>Built around your spouse's love language.</h2>
+  <p class="section-sub">During onboarding you take a short quiz to identify how your spouse gives and receives love. Every prayer, action, and date night idea is tailored from that moment forward.</p>
+  <div class="ll-grid">
+    <div class="ll-pill"><span class="ll-icon">💬</span> Words of Affirmation</div>
+    <div class="ll-pill"><span class="ll-icon">⏱️</span> Quality Time</div>
+    <div class="ll-pill"><span class="ll-icon">🎁</span> Receiving Gifts</div>
+    <div class="ll-pill"><span class="ll-icon">🛠️</span> Acts of Service</div>
+    <div class="ll-pill"><span class="ll-icon">🤗</span> Physical Touch</div>
+  </div>
+</section>
+
+<section class="stat-section">
+  <div class="stat-num">3.5x</div>
+  <div class="stat-label">more likely to report being happy in their marriage</div>
+  <div class="stat-text">"Couples who protect a weekly date night are 3.5x more likely to report being happy and deeply connected in their marriage."</div>
+  <div class="stat-source">The National Marriage Project, University of Virginia</div>
+</section>
+
+<section class="pricing-section" id="pricing">
+  <h2>Start free. Upgrade when you're ready.</h2>
+  <p class="section-sub">The core daily habit is completely free. Premium adds personalization, date nights, check-ins, and your full marriage history.</p>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-plan">Free</div>
+      <div class="pricing-price">$0</div>
+      <div class="pricing-period">forever</div>
+      <ul class="pricing-features">
+        <li>Daily prayer with spouse's name</li>
+        <li>Daily Scripture verse</li>
+        <li>Daily action of the day</li>
+        <li>Streak tracking</li>
+        <li>Daily reminder notification</li>
+        <li>Love language quiz</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Most popular</div>
+      <div class="pricing-plan">Premium</div>
+      <div class="pricing-price">$3.33</div>
+      <div class="pricing-period">per month, billed $39.99/yr · 7-day free trial</div>
+      <ul class="pricing-features">
+        <li>Everything in Free</li>
+        <li>AI-personalized daily prayers</li>
+        <li>Full love language action variety</li>
+        <li>Weekly date night suggestions</li>
+        <li>2-minute guided check-in</li>
+        <li>Full calendar history</li>
+        <li>Daily reflection prompts</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <h2>What couples are saying.</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"I didn't realize how much I'd stopped thinking about my husband during the day until VowDaily started pulling me back to him every morning. It's changed how I show up."</div>
+      <div class="testimonial-author">Sarah M. — married 8 years</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"The love language actions are so specific. It's not 'be kind to your spouse' — it's exactly what to do today for my wife. That specificity is what makes it actually happen."</div>
+      <div class="testimonial-author">James T. — married 4 years</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <div class="testimonial-text">"We both use it independently but we've noticed a real shift. We're more patient, more intentional. I think it's because we're both quietly praying for each other every single day."</div>
+      <div class="testimonial-author">Rachel K. — married 12 years</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="download">
+  <h2>Start praying for your spouse today.</h2>
+  <p>The daily habit that transforms your marriage. Start free today.</p>
+  <a href="https://apps.apple.com/app/id6788485846" class="app-store-btn" target="_blank" style="display:inline-flex;margin-top:32px">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    <div class="app-store-btn-inner">
+      <span class="app-store-btn-sub">Download on the</span>
+      <span class="app-store-btn-name">App Store</span>
+    </div>
+  </a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">VowDaily</div>
+      <p>A daily habit of prayer, action, and intentional love — rooted in Scripture and tailored to your marriage.</p>
+    </div>
+    <div class="footer-col">
+      <h4>App</h4>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#download">Download</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <a href="/privacy-policy">Privacy Policy</a>
+      <a href="/terms-of-service">Terms of Service</a>
+      <a href="mailto:support@vowdaily.app">Support</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 VowDaily · 1749 Victorian Ave PMB 2007, Sparks NV 89431</p>
+    <a href="mailto:support@vowdaily.app">support@vowdaily.app</a>
+  </div>
+</footer>
+
+</body>
+</html>
